@@ -25,7 +25,7 @@ namespace CarRentalSystem.Controllers
         }
 
         [HttpPost]
-       // [Authorize(Roles= "Admin")]
+        [Authorize(Roles= "Admin")]
         public IActionResult AddCar( CarModel car)
         {
             if (car == null || !ModelState.IsValid)
@@ -50,7 +50,7 @@ namespace CarRentalSystem.Controllers
 
         
         [HttpPut("{id}")]
-
+        [Authorize(Roles= "Admin")]
         public IActionResult UpdateCar(int id, CarModel updatedCar)
         {
             if (updatedCar == null || !ModelState.IsValid)
@@ -67,6 +67,7 @@ namespace CarRentalSystem.Controllers
 
         
         [HttpDelete("{id}")]
+        [Authorize(Roles= "Admin")]
         public IActionResult DeleteCar(int id)
         {
             var car = _carRentalService.GetCarById(id);
